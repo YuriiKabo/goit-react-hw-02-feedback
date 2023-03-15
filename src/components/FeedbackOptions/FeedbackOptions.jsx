@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 import css from './FeedbackOptions.module.css';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
@@ -10,8 +11,13 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
         name={option}
         key={nanoid()}
       >
-        {option}
+        {option.charAt(0).toUpperCase() + option.slice(1)}
       </button>
     );
   });
+};
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.array.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
